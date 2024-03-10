@@ -60,6 +60,7 @@ document.addEventListener('visibilitychange', function() {
     } else {
         isTabActive = true;
 	cleanUpEmojis();
+	randomSpawnEmoji()
     }
 });
 
