@@ -19,6 +19,7 @@ function createEmoji(eventX, eventY) {
     let directionY = (Math.random() - 0.5) * 2;
 
     function moveEmoji() {
+        if (!isTabActive) return;
 	emojiElement.style.left = `${parseFloat(emojiElement.style.left) + directionX}px`;
 	emojiElement.style.top = `${parseFloat(emojiElement.style.top) + directionY}px`;
 
@@ -51,8 +52,31 @@ function handleEvent(event) {
 }
 
 // Randomly spawn emojis to keep the site feeling fresh
+let isTabActive = true;
+
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        isTabActive = false;
+    } else {
+        isTabActive = true;
+	cleanUpEmojis();
+    }
+});
+
+function cleanUpEmojis() {
+    const emojis = document.querySelectorAll('.emoji');
+    emojis.forEach(emoji => {
+        emoji.style.opacity = '0'; // Fade out the emoji
+        // Once the fade-out transition is complete, remove the emoji from the DOM
+        emoji.addEventListener('transitionend', () => {
+            emoji.parentNode.removeChild(emoji);
+        });
+    });
+}
+
 function randomSpawnEmoji() {
-    // Generate random positions within the viewport
+    if (!isTabActive) return; // Do not spawn emojis if the tab is not active
+
     const eventX = Math.random() * window.innerWidth;
     const eventY = Math.random() * window.innerHeight;
 
@@ -60,11 +84,9 @@ function randomSpawnEmoji() {
 	createEmoji(eventX, eventY);
     }
 
-    // Adjust the timeout to control the frequency of random spawns
-    setTimeout(randomSpawnEmoji, Math.random() * 3500); // Random spawn between 1 to 3 seconds
+    setTimeout(randomSpawnEmoji, Math.random() * 3500);
 }
 
-// Start the random spawning process
 randomSpawnEmoji();
 
 // Use `mousemove` for desktop
