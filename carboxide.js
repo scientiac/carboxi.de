@@ -19,18 +19,18 @@ function createEmoji(eventX, eventY) {
     let directionY = (Math.random() - 0.5) * 2;
 
     function moveEmoji() {
-        emojiElement.style.left = `${parseFloat(emojiElement.style.left) + directionX}px`;
-        emojiElement.style.top = `${parseFloat(emojiElement.style.top) + directionY}px`;
+	emojiElement.style.left = `${parseFloat(emojiElement.style.left) + directionX}px`;
+	emojiElement.style.top = `${parseFloat(emojiElement.style.top) + directionY}px`;
 
-        // Gradually decrease speed and fade out
-        directionX *= 0.99;
-        directionY *= 0.99;
-        if (Math.abs(directionX) + Math.abs(directionY) < 0.5) {
-            emojiElement.style.opacity = 0;
-            setTimeout(() => document.body.removeChild(emojiElement), 2000);
-        } else {
-            requestAnimationFrame(moveEmoji);
-        }
+	// Gradually decrease speed and fade out
+	directionX *= 0.99;
+	directionY *= 0.99;
+	if (Math.abs(directionX) + Math.abs(directionY) < 0.5) {
+	    emojiElement.style.opacity = 0;
+	    setTimeout(() => document.body.removeChild(emojiElement), 3000);
+	} else {
+	    requestAnimationFrame(moveEmoji);
+	}
     }
 
     moveEmoji();
@@ -39,16 +39,33 @@ function createEmoji(eventX, eventY) {
 function handleEvent(event) {
     let eventX, eventY;
     if (event.type.startsWith('touch')) {
-        // Prevent the window from being scrolled
-        event.preventDefault();
-        eventX = event.touches[0].clientX;
-        eventY = event.touches[0].clientY;
+	// Prevent the window from being scrolled
+	event.preventDefault();
+	eventX = event.touches[0].clientX;
+	eventY = event.touches[0].clientY;
     } else {
-        eventX = event.clientX;
-        eventY = event.clientY;
+	eventX = event.clientX;
+	eventY = event.clientY;
     }
     createEmoji(eventX, eventY);
 }
+
+// Randomly spawn emojis to keep the site feeling fresh
+function randomSpawnEmoji() {
+    // Generate random positions within the viewport
+    const eventX = Math.random() * window.innerWidth;
+    const eventY = Math.random() * window.innerHeight;
+
+    for (let i = 0; i < 5; i++) {
+	createEmoji(eventX, eventY);
+    }
+
+    // Adjust the timeout to control the frequency of random spawns
+    setTimeout(randomSpawnEmoji, Math.random() * 2000); // Random spawn between 1 to 3 seconds
+}
+
+// Start the random spawning process
+randomSpawnEmoji();
 
 // Use `mousemove` for desktop
 document.addEventListener('mousemove', handleEvent);
