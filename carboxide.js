@@ -61,7 +61,7 @@ function randomSpawnEmoji() {
     }
 
     // Adjust the timeout to control the frequency of random spawns
-    setTimeout(randomSpawnEmoji, Math.random() * 2000); // Random spawn between 1 to 3 seconds
+    setTimeout(randomSpawnEmoji, Math.random() * 3500); // Random spawn between 1 to 3 seconds
 }
 
 // Start the random spawning process
