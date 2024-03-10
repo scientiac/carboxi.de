@@ -1,4 +1,4 @@
-const emojis = ['O', 'C'];
+const emojis = ['O','C'];
 const sizes = [8, 10, 12, 16, 20];
 
 function createEmoji(eventX, eventY) {
