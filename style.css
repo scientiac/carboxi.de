@@ -1,18 +1,29 @@
 body, html {
-    cursor: none;
-    overflow: hidden;
-    margin: 0;
     height: 100dvh;
-    background-color: #f0f0f0;
+    margin: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Arial, sans-serif;
-    font-size: 28px;
+    flex-direction: column;
+    font-family: 'Fantasque Sans Mono', sans-serif;
+    background-color: #f0f0f0;
 }
 
 .centered {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+footer {
     text-align: center;
+    padding: 20px;
+    text-decoration: none; 
+}
+
+a {
+    text-decoration: none; 
+    color: #000;
 }
 
 .emoji {
