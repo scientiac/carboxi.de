@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (firstLink) {
                     const dynamicLink = document.getElementById('dynamic-link');
                     dynamicLink.href = firstLink.href;
-                    dynamicLink.textContent = `⇁${firstLink.textContent || firstLink.href}`;
+                    dynamicLink.textContent = `➥ ${firstLink.textContent || firstLink.href}`;
                 } else {
                     console.error('No link found inside the first <article class="listing">');
                 }
