@@ -12,6 +12,10 @@ input {
     width: 50%;
 }
 
+p {
+    padding: 1rem
+}
+
 .button {
   --b: 0.1rem;
   --s: .35rem;
