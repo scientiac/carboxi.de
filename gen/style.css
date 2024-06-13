@@ -17,6 +17,11 @@ p {
     padding: 1rem
 }
 
+button {
+    all: unset;
+    padding: 1rem
+}
+
 .button {
   --b: 0.1rem;
   --s: .35rem;
