@@ -60,3 +60,9 @@ a {
     opacity: 1;
     transition: opacity 2s ease;
 }
+
+@media (min-width:320px)  { 
+    footer {
+        line-height: 3rem;
+    }
+}
