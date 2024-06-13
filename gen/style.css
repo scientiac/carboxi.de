@@ -13,6 +13,7 @@ input {
 }
 
 p {
+    overflow-wrap: anywhere;
     padding: 1rem
 }
 
