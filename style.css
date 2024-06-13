@@ -8,10 +8,10 @@ body, html {
 }
 
 .button {
-  --b: 3px;
-  --s: .45em;
-  --color: #373B44;
-  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  --b: 0.1rem;
+  --s: .35rem;
+  --color: #0f0f0f;
+  padding: calc(.25em + var(--s)) calc(.8em + var(--s));
   color: var(--color);
   --_p: var(--s);
   background:
@@ -63,6 +63,6 @@ a {
 
 @media (min-width:320px)  { 
     footer {
-        line-height: 3rem;
+        line-height: 2.5rem;
     }
 }
